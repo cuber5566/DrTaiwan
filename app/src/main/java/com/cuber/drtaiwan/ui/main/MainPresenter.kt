@@ -6,25 +6,20 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MainPresenter(private val mView: MainContract.View, private val mAppInfoRepository: AppInfoRepository) : MainContract.Presenter {
-
-    private val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
-
-    override fun onSubscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onUnSubscribe() {
-        mCompositeDisposable.dispose()
-        mCompositeDisposable.clear()
-    }
+class MainPresenter(
+        private val view: MainContract.View,
+        private val appInfoRepository: AppInfoRepository = AppInfoRepository.getInstance(),
+        private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+) : MainContract.Presenter {
 
     override fun getDivision() {
-        mCompositeDisposable.add(mAppInfoRepository.getDivisionList()
+
+        compositeDisposable.addAll(appInfoRepository.getDivisionList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { throwable: Throwable -> mView.onGetDivisionError(throwable) }
-                .subscribe { divisionList: List<Division> -> mView.onGetDivision(divisionList) }
-        )
+                .doOnError { throwable: Throwable -> view.onGetDivisionError(throwable) }
+                .subscribe { divisions: List<Division> -> view.onGetDivision(divisions) })
     }
+
+
 }

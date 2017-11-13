@@ -2,59 +2,44 @@ package com.cuber.drtaiwan.ui.main
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.cuber.drtaiwan.R
+import com.cuber.drtaiwan.extension.setupActionBar
+import com.cuber.drtaiwan.extension.setupActionBarDrawerToggle
 import com.cuber.drtaiwan.model.Division
-import com.cuber.drtaiwan.repository.AppInfoRepository
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(),
         MainContract.View,
         NavigationView.OnNavigationItemSelectedListener {
 
-    override fun onGetDivision(divisionList: List<Division>) {
-        Log.i("getDivision", divisionList.toString())
-    }
-
-    override fun onGetDivisionError(throwable: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private lateinit var mPresenter: MainPresenter
+    private lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mPresenter = MainPresenter(this, AppInfoRepository)
-        mPresenter.getDivision()
+        presenter = MainPresenter(this)
 
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        setupActionBar(R.id.toolbar) {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
         }
 
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+        setupActionBarDrawerToggle(R.id.drawerLayout, R.id.toolbar)
 
         nav_view.setNavigationItemSelectedListener(this)
 
+        presenter.getDivision()
     }
 
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
@@ -99,7 +84,15 @@ class MainActivity : AppCompatActivity(),
             }
         }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onGetDivision(divisionList: List<Division>) {
+        Log.i("getDivision", divisionList.toString())
+    }
+
+    override fun onGetDivisionError(throwable: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

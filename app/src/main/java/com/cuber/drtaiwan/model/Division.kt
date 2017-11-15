@@ -2,7 +2,7 @@ package com.cuber.drtaiwan.model
 
 data class Division(
 
-        val id: String, //01
-        val name: String, //dentist
-        val displayName: String //牙科
+        var id: String, //01
+        var name: String, //dentist
+        var displayName: String //牙科
 )

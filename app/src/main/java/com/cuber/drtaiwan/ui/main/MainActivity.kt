@@ -3,28 +3,31 @@ package com.cuber.drtaiwan.ui.main
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.cuber.drtaiwan.R
+import com.cuber.drtaiwan.base.BaseActivity
 import com.cuber.drtaiwan.extension.setupActionBar
 import com.cuber.drtaiwan.extension.setupActionBarDrawerToggle
 import com.cuber.drtaiwan.model.Division
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
         MainContract.View,
         NavigationView.OnNavigationItemSelectedListener {
 
+
     private lateinit var presenter: MainPresenter
+    private lateinit var pagerAdapter: MainPagerAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onCreateData(savedInstanceState: Bundle?) {
         presenter = MainPresenter(this)
+        lifecycle.addObserver(presenter)
+    }
 
+    override fun onCreateView(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_main)
+
         setupActionBar(R.id.toolbar) {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
@@ -32,8 +35,15 @@ class MainActivity : AppCompatActivity(),
 
         setupActionBarDrawerToggle(R.id.drawerLayout, R.id.toolbar)
 
-        nav_view.setNavigationItemSelectedListener(this)
+        navigationView.setNavigationItemSelectedListener(this)
 
+        tabLayout.setupWithViewPager(viewPager)
+
+        pagerAdapter = MainPagerAdapter(supportFragmentManager)
+        viewPager.adapter = pagerAdapter
+    }
+
+    override fun onCreateAction(savedInstanceState: Bundle?) {
         presenter.getDivision()
     }
 
@@ -47,7 +57,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        menuInflater.inflate(R.menu.toolbar_main, menu)
         return true
     }
 
@@ -89,7 +99,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onGetDivision(divisionList: List<Division>) {
-        Log.i("getDivision", divisionList.toString())
+        pagerAdapter.divisionList = divisionList
+        pagerAdapter.notifyDataSetChanged()
     }
 
     override fun onGetDivisionError(throwable: Throwable) {

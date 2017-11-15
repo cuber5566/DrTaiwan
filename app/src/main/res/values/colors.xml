@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#00796B</color>
+    <color name="colorAccent">#f50057</color>
+
+    <color name="background">#4C4C4C</color>
+
+    <color name="black_dividers">#1f000000</color>
+    <color name="black_text_hint">#61000000</color>
+    <color name="black_text_disabled">#61000000</color>
+    <color name="black_text_secondary">#8a000000</color>
+    <color name="black_text">#de000000</color>
+
+    <color name="white_dividers">#1fffffff</color>
+    <color name="white_text_hint">#4dffffff</color>
+    <color name="white_text_disabled">#4dffffff</color>
+    <color name="white_text_secondary">#b3ffffff</color>
+    <color name="white_text">#ffffff</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="black">#000000</color>
+    <color name="black_alpha20">#19000000</color>
+    <color name="black_alpha25">#40000000</color>
+    <color name="black_alpha50">#70000000</color>
+    <color name="black_alpha75">#BF000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_alpha20">#19FFFFFF</color>
+    <color name="white_alpha25">#40FFFFFF</color>
+    <color name="white_alpha50">#70FFFFFF</color>
+    <color name="white_alpha75">#BFFFFFFF</color>
+
+
 </resources>

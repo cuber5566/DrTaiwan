@@ -143,9 +143,10 @@ Line @ID:@smilerx
     </string>
     <string name="test_like_count">5566 個喜歡</string>
     <string name="test_response_count">7788 則回應</string>
-    <string name="text_doctor_name">孫協志</string>
-    <string name="text_clinic_name">喬傑立中醫診所</string>
+    <string name="test_doctor_name">孫協志</string>
+    <string name="test_clinic_name">喬傑立中醫診所</string>
     <string name="test_doctor_title">院長</string>
     <string name="add_bookmark">加入書籤</string>
     <string name="add_favorite">加入最愛</string>
+    <string name="test_avatar_url"><![CDATA[https://avatars1.githubusercontent.com/u/7425198?s=460&v=4]]></string>
 </resources>

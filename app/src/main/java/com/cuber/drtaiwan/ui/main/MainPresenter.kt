@@ -3,7 +3,6 @@ package com.cuber.drtaiwan.ui.main
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.OnLifecycleEvent
-import com.cuber.drtaiwan.model.Division
 import com.cuber.drtaiwan.repository.AppInfoRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -29,7 +28,7 @@ class MainPresenter(
         compositeDisposable.addAll(appInfoRepository.getDivisionList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { throwable: Throwable -> view.onGetDivisionError(throwable) }
-                .subscribe { divisions: List<Division> -> view.onGetDivision(divisions) })
+                .doOnError(view::onGetDivisionError)
+                .subscribe(view::onGetDivision))
     }
 }

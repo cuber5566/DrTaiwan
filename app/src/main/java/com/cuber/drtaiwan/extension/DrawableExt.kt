@@ -10,5 +10,5 @@ import android.support.v4.content.ContextCompat
  * Created by cuber on 2017/11/16.
  */
 fun Drawable.setColor(context: Context, @ColorRes color: Int) {
-    setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.MULTIPLY)
+    mutate().setColorFilter(ContextCompat.getColor(context, color), PorterDuff.Mode.SRC_IN)
 }

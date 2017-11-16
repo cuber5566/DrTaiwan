@@ -8,12 +8,8 @@ import android.app.Application
 
 class DrTaiwanApplication : Application() {
 
-    companion object {
-        lateinit var INSTANCE: DrTaiwanApplication
-    }
-
     override fun onCreate() {
         super.onCreate()
-        INSTANCE = this
+        ResourceProvider.getInstance().init(this)
     }
 }

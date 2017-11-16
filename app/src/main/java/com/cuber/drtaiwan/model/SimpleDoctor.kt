@@ -9,5 +9,5 @@ data class SimpleDoctor(
         var name: String,
         var title: String,
         var avatar: String,
-        var clinic: Clinic
+        var clinicName: String
 )

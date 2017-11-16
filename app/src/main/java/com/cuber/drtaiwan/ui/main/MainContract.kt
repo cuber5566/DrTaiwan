@@ -1,6 +1,6 @@
 package com.cuber.drtaiwan.ui.main
 
-import com.cuber.drtaiwan.base.BasePresenter
+import com.cuber.drtaiwan.base.BasePresenterImp
 import com.cuber.drtaiwan.model.Division
 
 interface MainContract {
@@ -12,9 +12,8 @@ interface MainContract {
         fun onGetDivisionError(throwable: Throwable)
     }
 
-    interface Presenter :BasePresenter{
+    interface Presenter : BasePresenterImp {
 
         fun getDivision()
-
     }
 }

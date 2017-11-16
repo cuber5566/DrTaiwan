@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <android.support.v4.widget.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/doctorAvatar"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -31,7 +31,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/doctorAvatar"
             app:layout_constraintTop_toTopOf="@+id/doctorAvatar"
-            tools:text="@string/text_doctor_name" />
+            tools:text="@string/test_doctor_name" />
 
         <TextView
             android:id="@+id/doctorTitle"
@@ -53,7 +53,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/doctorAvatar"
             app:layout_constraintTop_toBottomOf="@+id/doctorName"
-            tools:text="@string/text_clinic_name" />
+            tools:text="@string/test_clinic_name" />
 
         <TextView
             android:id="@+id/title"

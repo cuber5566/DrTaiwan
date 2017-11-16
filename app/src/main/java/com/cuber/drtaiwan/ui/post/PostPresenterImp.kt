@@ -3,7 +3,7 @@ package com.cuber.drtaiwan.ui.post
 /**
  * Created by cuber on 2017/11/16.
  */
-interface PostPresenter {
+interface PostPresenterImp {
 
     fun addFavorite(postId: String)
 

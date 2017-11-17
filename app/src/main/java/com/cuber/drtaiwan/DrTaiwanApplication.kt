@@ -1,15 +1,14 @@
 package com.cuber.drtaiwan
 
 import android.app.Application
-
-/**
- * Created by cuber on 2017/10/26.
- */
+import com.cuber.drtaiwan.util.ResourceTool
+import com.cuber.drtaiwan.util.PreferencesTool
 
 class DrTaiwanApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        ResourceProvider.getInstance().init(this)
+        ResourceTool.getInstance().init(this)
+        PreferencesTool.getInstance().init(this)
     }
 }

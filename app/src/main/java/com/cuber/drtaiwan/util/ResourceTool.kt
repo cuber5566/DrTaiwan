@@ -1,10 +1,10 @@
-package com.cuber.drtaiwan
+package com.cuber.drtaiwan.util
 
 import android.app.Application
 import android.content.res.Resources
 import android.support.annotation.StringRes
 
-class ResourceProvider {
+class ResourceTool {
 
     lateinit var resource: Resources
 
@@ -17,11 +17,11 @@ class ResourceProvider {
 
     companion object {
 
-        private var INSTANCE: ResourceProvider? = null
+        private var INSTANCE: ResourceTool? = null
 
         @JvmStatic
-        fun getInstance(): ResourceProvider {
-            return INSTANCE ?: ResourceProvider()
+        fun getInstance(): ResourceTool {
+            return INSTANCE ?: ResourceTool()
                     .apply { INSTANCE = this }
         }
 
